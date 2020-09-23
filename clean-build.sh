@@ -3,9 +3,13 @@
 
 # build client
 cd client
+rm -rf node_modules
+npm i
 npm run build
 cd ..
 # build server
 cd server
+rm -rf node_modules
+npm i
 npm run build
 cd ..
