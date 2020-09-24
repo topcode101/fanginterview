@@ -66,14 +66,13 @@ class InterviewService extends BaseService {
    * @param {*} type
    * @param {Object} otherinfo
    */
-  async add(website: WebSiteType, id: string, content: string) {
-    console.log(WebSiteType.YiMuSenFenDi);
+  async add(website: WebSiteType, id: string, content: string, type, company, publishDate, origHref) {
     const interviewObject = await this.find(website, id);
     if (interviewObject) {
       throw new Error(`already added: website '${website}', id '${id}'`);
     } else {
       await this.dbService.insert(this.dbName, this.collectionName, {
-        website, id, content
+        website, id, type, company, publishDate, content, origHref
       });
     }
   }

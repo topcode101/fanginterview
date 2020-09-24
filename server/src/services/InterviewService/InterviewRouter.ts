@@ -1,5 +1,40 @@
 const express = require('express');
 
+function extractTypeCompany(content) {
+  const firstLine = content.split('\n')[0];
+  if (firstLine) {
+    try {
+      const words = firstLine.split(' ');
+      
+      let type = 'uncategorized';
+      switch(words[1]) {
+        case `码农类General`:
+          type = 'SoftwareEng';
+          break;
+        case 'DataEng':
+          type = 'DataEng';
+          break;
+        case '分析|数据科学类':
+          type = 'DataEng';
+          break;
+        case 'MachineLearningEng':
+          type = 'DataEng';
+          break;
+        default:
+          // code block
+      }
+
+      //let type = words[1] === `码农类General` ? 'SoftwareEng' : words[1] === 'DataEng' ? 'DataEng': 'uncategorized';
+      let company = words[3].split('@')[1];
+      return {type, company};
+    } catch( err) {
+      return {};
+    }
+
+  }
+  return {};
+}
+
 const ONEDAY = 3600 * 24;
 /**
  * UserRouter
@@ -25,10 +60,12 @@ class InterviewRouter {
     this.router.post('/interview', async (req, res, next)=>{
       try {
         const interviewService = this.app.getService('Interview');
-        //verify user/pass
+        //todo: verify user/pass
 
-        const {website, user, pass, id, content} = req.body;
-        interviewService.add(website, id, content);
+        const {website, user, pass, id, content, origHref, publishDate} = req.body;
+        const {type, company} = extractTypeCompany(content);
+        const pDate = new Date(publishDate);
+        interviewService.add(website, id, content, type, company, pDate, origHref);
         res.send(JSON.stringify({user}));
       } catch (err) {
         res.send(JSON.stringify({
@@ -50,44 +87,6 @@ class InterviewRouter {
       }
 
       res.json(ret);
-    });
-
-    // this is only used for dev mode
-    this.router.post('/user/decodeToken', async (req, res)=>{
-      const userService = this.app.getService('User');
-      const {token} = req.cookies;
-      try {
-        userService.verifyToken(token);
-      } catch (err) {
-        res.send({
-          error: err.message,
-        });
-      }
-    });
-
-    // get myslef info
-    this.router.get('/user', async (req, res)=>{
-      const userService = this.app.getService('User');
-      // read the token from header or url
-      const token = req.headers['x-access-token'] || req.query.token;
-      if (!token) {
-        res.send({
-          error: 'Need to sign in.',
-        });
-      }
-      try {
-        const decoded = userService.verifyToken(token);
-        const subject = decoded.subject;
-        const [name, type] = subject.split(',');
-        void(type);
-        const userModel = userService.find(name);
-        delete userModel['pass']; // never send back password
-        res.send(userModel);
-      } catch (err) {
-        res.send({
-          error: err.message,
-        });
-      }
     });
   }
 

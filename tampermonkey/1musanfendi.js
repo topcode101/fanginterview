@@ -20,9 +20,16 @@
     const USER='admin';
     const PASS='pass';
     const fanginterview_ip_addr = `192.168.0.19:10010`;
+    //const fanginterview_ip_addr = `178.128.187.156:20093`;
 
     function _getDateFromTr(tr) {
-        return {date: $(tr).find('td em a span')[0].title}
+        try {
+            const ret = {date: $(tr).find('td em a span')[0].title}
+            return ret;
+        } catch(e) {
+            return {};
+        }
+
     }
 
     function _parseSearchStr(search) {
@@ -176,11 +183,16 @@
 
     if (window.location.pathname === '/bbs/forum-145-1.html') {
         processForumPageWithId(145);
-    } else if (window.location.search) {
+    } else if (window.location.pathname === '/bbs/forum-259-1.html') {
+        processForumPageWithId(259);
+    }else if (window.location.search) {
         const params = _parseSearchStr(window.location.search);
         if (params.fid == '145') {
             processForumPageWithId(145);
+        } else if (params.fid == '259') {
+            processForumPageWithId(259);
         }
+
     }
 
     $("body").append ( '                                                          \
@@ -258,7 +270,11 @@ function processForumPageWithId(id) {
         }
         const hrefSearchStr = hrefTitle.href.substring(hrefTitle.href.indexOf('?') + 1);
         const params = _parseSearchStr(hrefSearchStr);
-        const tid = params.tid;
+        let tid = params.tid;
+        if (tid === undefined) {
+            const ll = hrefTitle.href.split('-');
+            tid = ll[1];
+        }
         const newTd1$ = $(`
             <td class="newForum">
                 <p> Recorded ${tid}</p>
