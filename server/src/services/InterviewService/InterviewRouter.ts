@@ -78,7 +78,22 @@ class InterviewRouter {
     this.router.get('/interview', async (req, res)=>{
       const { website, user, pass, id } = req.query;
       const userService = this.app.getService('Interview');
-      const interviewObject = await userService.find(website, id);
+      const interviewObject = await userService.findById(website, id);
+      let ret : { found:boolean } = {
+        found: false
+      }
+      if (interviewObject) {
+        ret.found = true;
+      }
+
+      res.json(ret);
+    });
+
+    // if user exist
+    this.router.get('/interviews', async (req, res)=>{
+      const { website, user, pass, company, start_date, end_date } = req.query;
+      const userService = this.app.getService('Interview');
+      const interviewObject = await userService.findById(website, company, start_date, end_date);
       let ret : { found:boolean } = {
         found: false
       }

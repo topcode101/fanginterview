@@ -16,7 +16,7 @@ export default {
 
   jwtSecret: 'ABCDEFGHI',
 
-  MAX_RECORDS_PER_PAGE_DEFAULT: 200,
+  MAX_RECORDS_PER_PAGE_DEFAULT: 1000,
   MAX_RECORDS_PER_PAGE_MAX: 1000,
 
   // translation service

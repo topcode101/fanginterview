@@ -54,7 +54,7 @@ class InterviewService extends BaseService {
    *
    * @param {*} username
    */
-  async find(website, id) {
+  async findById(website, id) {
     return this.dbService.findOne(this.dbName, this.collectionName, {website, id});
   }
 
@@ -69,9 +69,12 @@ class InterviewService extends BaseService {
   async add(website: WebSiteType, id: string, content: string, type, company, publishDate, origHref) {
     const interviewObject = await this.find(website, id);
     if (interviewObject) {
-      throw new Error(`already added: website '${website}', id '${id}'`);
+      console.warn(`Already added: website '${website}', id '${id}'. will update.`);
+      await this.dbService.update(this.dbName, this.collectionName, {
+        website, id, type, company, publishDate, content, origHref
+      });
     } else {
-      await this.dbService.insert(this.dbName, this.collectionName, {
+      await this.dbService.insert(this.dbName, this.collectionName, {id}, {
         website, id, type, company, publishDate, content, origHref
       });
     }
