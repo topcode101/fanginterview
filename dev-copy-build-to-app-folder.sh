@@ -2,7 +2,6 @@ rm -rf ./app
 mkdir app
 cd app
 mkdir -p client/dist
-mkdir -p server/dist
 cd ..
 
 ## copy server
@@ -12,5 +11,5 @@ cd app/server && npm install --only=prod
 cd ../..
 
 ## copy client
-cp client/package.json app/client/.
-cp -R client/dist app/client
+cp -R client/public app/client
+mv app/client/public app/client/dist
