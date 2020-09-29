@@ -57,7 +57,30 @@ class InterviewService extends BaseService {
   async findById(website, id) {
     return this.dbService.findOne(this.dbName, this.collectionName, {website, id});
   }
+  
+  async findAll(type, company, startDate, endDate) {
+    return this.dbService.find(this.dbName, this.collectionName, /*key*/{
+      publishDate: {
+        $gt: startDate,
+        $lt: endDate
+      },
+      company: company,
+      type: type
+    });
 
+  }
+
+  async findLatestOne(type, company, startDate, endDate) {
+    return this.dbService.findLatestOne(this.dbName, this.collectionName, /*key*/{
+      publishDate: {
+        $gt: startDate,
+        $lt: endDate
+      },
+      company: company,
+      type: type
+    });
+
+  }
 
   /**
    *
@@ -67,14 +90,14 @@ class InterviewService extends BaseService {
    * @param {Object} otherinfo
    */
   async add(website: WebSiteType, id: string, content: string, type, company, publishDate, origHref) {
-    const interviewObject = await this.find(website, id);
+    const interviewObject = await this.findById(website, id);
     if (interviewObject) {
       console.warn(`Already added: website '${website}', id '${id}'. will update.`);
-      await this.dbService.update(this.dbName, this.collectionName, {
+      await this.dbService.update(this.dbName, this.collectionName, {id}, {
         website, id, type, company, publishDate, content, origHref
       });
     } else {
-      await this.dbService.insert(this.dbName, this.collectionName, {id}, {
+      await this.dbService.insert(this.dbName, this.collectionName, {
         website, id, type, company, publishDate, content, origHref
       });
     }

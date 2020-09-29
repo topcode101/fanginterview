@@ -171,6 +171,26 @@ class DatabaseService extends BaseService {
     return modifiedCount;
   }
 
+    /**
+   *
+   * @param {string} dbName
+   * @param {string} collectionName
+   * @param {object} key - which record we want to find
+   *
+   */
+  async findLatestOne(dbName, collectionName, key) {
+    if (!dbName || !collectionName || !key) return 0;
+
+    const db = this.getDB(dbName);
+    let result = null;
+    try {
+      result = await db.collection(collectionName).findOne(key, {sort:{$natural:-1}});
+    } catch (error) {
+      console.log(error);
+    }
+    return result;
+  }
+
   /**
    *
    * @param {string} dbName

@@ -21,7 +21,7 @@ export const aboutData = {
   paragraphOne: '本网站主要目的是帮助大家准备FANG公司的面试。',
   paragraphTwo: '网站内容来自互联网。更新频率为每天。请大家好好珍惜。',
   paragraphThree: '祝大家面试愉快。',
-  resume: 'https://www.resumemaker.online/es.php', // if no resume, the button will not show up
+  //resume: 'https://www.resumemaker.online/es.php', // if no resume, the button will not show up
 };
 
 // PROJECTS DATA
@@ -30,6 +30,7 @@ export const projectsData = [
     id: nanoid(),
     img: 'google.jpg',
     title: 'Google',
+    company: 'Google',
     info: '',
     info2: '',
     url: '',
@@ -39,6 +40,7 @@ export const projectsData = [
     id: nanoid(),
     img: 'facebook.png',
     title: 'Facebook',
+    company: 'Facebook',
     info: '',
     info2: '',
     url: '',
@@ -48,6 +50,7 @@ export const projectsData = [
     id: nanoid(),
     img: 'amazon.png',
     title: 'Amazon',
+    company: 'Amazon',
     info: '',
     info2: '',
     url: '',
@@ -57,6 +60,7 @@ export const projectsData = [
     id: nanoid(),
     img: 'netflix.jpeg',
     title: 'Netflix',
+    company: 'Netflix',
     info: '',
     info2: '',
     url: '',

@@ -1,4 +1,10 @@
 module.exports = {
+  proxy: [
+    {
+      prefix: '/api',
+      url: 'http://localhost:10010'
+    }
+  ],
   plugins: [
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
