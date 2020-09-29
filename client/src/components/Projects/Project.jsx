@@ -10,6 +10,21 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 
+function triggerDownload(url) {
+  let a = document.createElement('a')
+  a.href = url
+  a.download = url;
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+}
+
+async function handleDownloadButton(type, company/*, start_date, end_date*/) {
+  await axios.get(`/api/downloadFile?company=${company}&type=${type}`).then((response)=>{
+    triggerDownload(response.data.href);
+  })
+}
+
 const Project = ({definition}) => {
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -108,7 +123,9 @@ const Project = ({definition}) => {
             >
               <Button variant="outline-primary" 
                 style={{'whiteSpace': 'break-spaces' }}
-                size='lg'>
+                size='lg'
+                onClick={handleDownloadButton.bind(null, 'SoftwareEng', definition.company)}
+                >
                 {btnAhover? `点击下载\nSoftware Engineer 面经 (${numOfRecordsForSoftware})` : `${lastestPostTimeForSoftware} 更新\nSoftware Engineer 面经`}
               </Button>
             </div>
@@ -120,8 +137,10 @@ const Project = ({definition}) => {
             >
               <Button variant="outline-success" 
                 style={{'whiteSpace': 'break-spaces', 'width':'100%' }}
-                size='lg'>
-                {btnBhover? `点击下载\nSoftware Engineer 面经 (${numOfRecordsForDataEng})` : `${lastestPostTimeForDataEng} 更新\nSoftware Engineer 面经`}
+                size='lg'
+                onClick={handleDownloadButton.bind(null, 'DataEng', definition.company)}
+                >
+                {btnBhover? `点击下载\nData Engineer 面经 (${numOfRecordsForDataEng})` : `${lastestPostTimeForDataEng} 更新\nData Engineer 面经`}
               </Button>
             </div>
           </Row>

@@ -58,14 +58,20 @@ class InterviewService extends BaseService {
     return this.dbService.findOne(this.dbName, this.collectionName, {website, id});
   }
   
-  async findAll(type, company, startDate, endDate) {
+  async findAll(type, company, start_date, end_date) {
+    const days = 8;
+    const today = new Date();
+    let endDate = end_date || new Date(today.getTime() + (1 * 24 * 60 * 60 * 1000));
+    let startDate = start_date || new Date(endDate.getTime() - (days * 24 * 60 * 60 * 1000));
+
+    let softOrData = type || 'SoftwareEng';
     return this.dbService.find(this.dbName, this.collectionName, /*key*/{
       publishDate: {
         $gt: startDate,
         $lt: endDate
       },
       company: company,
-      type: type
+      type: softOrData
     });
 
   }

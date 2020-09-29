@@ -91,16 +91,11 @@ class InterviewRouter {
 
     // if user exist
     this.router.get('/interviews', async (req, res)=>{
-      const { type, user, pass, company, start_date, end_date } = req.query;
-      const userService = this.app.getService('Interview');
-
-      const days = 8;
-      const today = new Date();
-      let endDate = end_date || new Date(today.getTime() + (1 * 24 * 60 * 60 * 1000));
-      let startDate = start_date || new Date(endDate.getTime() - (days * 24 * 60 * 60 * 1000));
-
-      let softOrData = type || 'SoftwareEng';
-      const interviewObject = await userService.findAll(softOrData/* type */, company, startDate, endDate);
+      // todo: auth if needed...
+      //const { user, pass } = req.query;
+      const interviewService = this.app.getService('Interview');
+      const { type, company, start_date, end_date } = req.query;
+      const interviewObject = await interviewService.findAll(type, company, start_date, end_date);
       let ret : { found:boolean, totalRecords ?: any, latestPublishTime ?: any } = {
         found: false
       }

@@ -54,11 +54,11 @@ class ExpressServer {
     console.log(`    ... use ${config.wwwRoot} as static root`);
     this.expressApp.use(express.static(config.wwwRoot));
 
-    // if (!fs.existsSync(config.houseImagesDir)) {
-    //   fs.mkdirSync(config.houseImagesDir, {recursive: true});
-    // }
-    // console.log(`    ... use ${config.houseImagesDir} as static image root`);
-    // this.expressApp.use('/static/img/', express.static(config.houseImagesDir));
+    if (!fs.existsSync(config.cacheDocsDir)) {
+      fs.mkdirSync(config.cacheDocsDir, {recursive: true});
+    }
+    console.log(`    ... use ${config.cacheDocsDir} as static download root`);
+    this.expressApp.use('/download/', express.static(config.cacheDocsDir));
 
     this.expressApp.use(express.json());
     this.expressApp.use(express.urlencoded({extended: false}));

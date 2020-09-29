@@ -3,6 +3,10 @@ module.exports = {
     {
       prefix: '/api',
       url: 'http://localhost:10010'
+    },
+    {
+      prefix: '/download',
+      url: 'http://localhost:10010'
     }
   ],
   plugins: [
