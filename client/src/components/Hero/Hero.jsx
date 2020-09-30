@@ -27,7 +27,7 @@ const Header = () => {
       <Container>
         <Fade left={isDesktop} bottom={isMobile} duration={1000} delay={500} distance="30px">
           <h1 className="hero-title">
-            {title || 'Hi, my name is'}{' '}
+            {title || 'FANG面经集合'}{' '}
             {/* <span className="text-color-main">{name || 'Your Name'}</span> */}
             <br />
             <span className="text-color-main">{subtitle || "梦想开始的地方"}</span>
@@ -53,7 +53,7 @@ const Header = () => {
         <Col lg={8}>
           <Fade left={isDesktop} bottom={isMobile} duration={1000} delay={500} distance="30px">
             <h1 className="hero-title">
-              {title || 'Hi, my name is'}{' '}
+              {title || 'FANG面经集合'}{' '}
               {/* <span className="text-color-main">{name || 'Your Name'}</span> */}
               <br />
               <span className="text-color-main">{subtitle || "梦想开始的地方"}</span>
