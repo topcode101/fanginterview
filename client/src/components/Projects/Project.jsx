@@ -5,9 +5,6 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import PortfolioContext from '../../context/context';
 import Title from '../Title/Title';
 import ProjectImg from '../Image/ProjectImg';
-
-import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 
 function triggerDownload(url) {
@@ -85,15 +82,14 @@ const Project = ({definition}) => {
 
   return (
     <Col key={id} lg={3} sm={12}>
-      <Row>
-
-          <div className="project-wrapper__image">
-            <a
+      <Row style={{justifyContent: 'center'}}>
+          <div className="project-wrapper__image" style={{width: isDesktop? '80%': '30%'}}>
+            {/* <a
               href={url || '#!'}
               target="_blank"
               aria-label="Project Link"
               rel="noopener noreferrer"
-            >
+            > */}
               <Tilt
                 options={{
                   reverse: false,
@@ -111,12 +107,14 @@ const Project = ({definition}) => {
                   <ProjectImg alt={title} filename={img} />
                 </div>
               </Tilt>
-            </a>
+            {/* </a> */}
           </div>
       </Row>
       <Row>
           <Container>
-          <Row>
+          <Row
+            style={{justifyContent: 'center'}}
+          >
             <div
                onMouseEnter={()=>setBtnAHover(true)}
                onMouseLeave={()=>setBtnAHover(false)} // should use ...
@@ -130,7 +128,9 @@ const Project = ({definition}) => {
               </Button>
             </div>
           </Row>
-          <Row>
+          <Row
+            style={{justifyContent: 'center'}}
+          >
             <div
                onMouseEnter={()=>setBtnBHover(true)}
                onMouseLeave={()=>setBtnBHover(false)} // should use ...

@@ -10,14 +10,14 @@ export const headData = {
 // HERO DATA
 export const heroData = {
   title: 'FANG面经集合',
-  name: 'Fang机经',
+  //name: 'Fang机经',
   subtitle: '梦想开始的地方',
   cta: '',
 };
 
 // ABOUT DATA
 export const aboutData = {
-  img: 'hiring.png',
+  img: 'hiring1.png',
   paragraphOne: '本网站主要目的是帮助大家准备FANG公司的面试。',
   paragraphTwo: '网站内容来自互联网。更新频率为每天。请大家好好珍惜。',
   paragraphThree: '祝大家面试愉快。',
