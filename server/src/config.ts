@@ -4,7 +4,7 @@ export default {
   appName: 'fanginterview',
   // app
   servicesPath: __dirname + '/services',
-  wwwRoot: __dirname + '/../../client/dist', //process.env.NODE_ENV === 'production' ? '/www' : __dirname + '/../../client/dist',
+  wwwRoot: __dirname + (process.env.NODE_ENV === 'production' ? '/../../client/dist': '/../../client/public'), //process.env.NODE_ENV === 'production' ? '/www' : __dirname + '/../../client/dist',
   httpServerPort: process.env.NODE_ENV === 'production' ? '3000' : '10010',
   localReposDir: process.env.NODE_ENV === 'production' ? __dirname + '/../' : __dirname + '/../',
   GOOGLE_APPLICATION_CREDENTIALS: __dirname + '/services/TranslationService//myottawa101-c77579cf71fe.json',

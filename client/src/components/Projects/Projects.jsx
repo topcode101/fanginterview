@@ -33,7 +33,7 @@ const Projects = () => {
 
   }
   return (
-    <section id="projects">
+    <mysection id="projects">
       <Container>
         <div className="project-wrapper">
           <Title title="公司面经" />
@@ -52,7 +52,7 @@ const Projects = () => {
           </Fade>
         </div>
       </Container>
-    </section>
+    </mysection>
   );
 };
 

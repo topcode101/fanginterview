@@ -53,7 +53,7 @@
     @include respond(phone) {
       -webkit-text-fill-color: $secondary-color;
     }
-
+    cursor:pointer !important;
     &::after {
       width: 100%;
     }

@@ -9,9 +9,9 @@ export const headData = {
 
 // HERO DATA
 export const heroData = {
-  title: 'FANG面经集合',
+  title: 'Become a Facebook Scientist',
   //name: 'Fang机经',
-  subtitle: '梦想开始的地方',
+  subtitle: 'Interview Questions',
   cta: '',
 };
 

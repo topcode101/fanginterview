@@ -1,13 +1,18 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Container, Col, Row} from 'react-bootstrap';
 import Fade from 'react-reveal/Fade';
-import { Link } from 'react-scroll';
 import PortfolioContext from '../../context/context';
 import AboutImg from '../Image/AboutImg';
+import { Button } from 'antd';
 
 const Header = () => {
+  /*
+     todo: clean up the code around
+     do not use context here, since the is the landign page. we want everything is hardcoded
+     to have better user experience. (super quick rendering when first time loading the page)
+  */
   const { hero } = useContext(PortfolioContext);
-  const { title, name, subtitle, cta } = hero;
+  // const { title, name, subtitle, cta } = hero;
 
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -22,49 +27,65 @@ const Header = () => {
     }
   }, []);
 
+  const title = 'Become a Facebook Scientist';
+  const subtitle = 'Interview Questions';
+
   const mobileRender = (
-    <section id="hero" className="jumbotron">
+    <mysection id="hero" className="jumbotron">
       <Container>
-        <Fade left={isDesktop} bottom={isMobile} duration={1000} delay={500} distance="30px">
+        <Fade left={isDesktop} bottom={isMobile} duration={700} delay={500} distance="30px">
           <h1 className="hero-title">
-            {title || 'FANG面经集合'}{' '}
+            {title}{' '}
             {/* <span className="text-color-main">{name || 'Your Name'}</span> */}
             <br />
-            <span className="text-color-main">{subtitle || "梦想开始的地方"}</span>
+            <span className="text-color-main">{subtitle}</span>
           </h1>
         </Fade>
-        <Fade left={isDesktop} bottom={isMobile} duration={1000} delay={1000} distance="30px">
-          <p className="hero-cta">
-            <span className="cta-btn cta-btn--hero">
-              <Link to="about" smooth duration={1000}>
-                {cta || 'Know more'}
-              </Link>
-            </span>
-          </p>
+        
+        <Fade left={isDesktop} bottom={isMobile} duration={700} delay={1000} distance="30px">
+            <p className="hero-cta">
+              <span className="cta-btn cta-btn--hero">
+              <a
+                onClick={()=>{
+                  window.location.href = 'http://' + window.location.host + '/all-articles'
+                  console.log('clicked')
+                }}
+              >
+                Know more
+              </a>
+              </span>
+            </p>
         </Fade>
+            
       </Container>
-    </section>
+    </mysection>
   );
 
   const desktopRender = (
-    <section id="hero" className="jumbotron">
+    <mysection id="hero" className="jumbotron">
       <Container>
         <Row>
         <Col lg={8}>
           <Fade left={isDesktop} bottom={isMobile} duration={1000} delay={500} distance="30px">
             <h1 className="hero-title">
-              {title || 'FANG面经集合'}{' '}
+              {title}{' '}
               {/* <span className="text-color-main">{name || 'Your Name'}</span> */}
               <br />
-              <span className="text-color-main">{subtitle || "梦想开始的地方"}</span>
+              <span className="text-color-main">{subtitle}</span>
             </h1>
           </Fade>
+          
           <Fade left={isDesktop} bottom={isMobile} duration={1000} delay={1000} distance="30px">
             <p className="hero-cta">
               <span className="cta-btn cta-btn--hero">
-                <Link to="about" smooth duration={1000}>
-                  {cta || 'Know more'}
-                </Link>
+              <a
+                onClick={()=>{
+                  window.location.href = 'http://' + window.location.host + '/all-articles'
+                  console.log('clicked')
+                }}
+              >
+                Know more
+              </a>
               </span>
             </p>
           </Fade>
@@ -74,7 +95,7 @@ const Header = () => {
         </Col>
         </Row>
       </Container>
-    </section>
+    </mysection>
   );
 
   return isDesktop ? desktopRender: mobileRender;

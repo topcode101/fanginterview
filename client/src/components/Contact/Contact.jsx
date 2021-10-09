@@ -9,7 +9,7 @@ const Contact = () => {
   const { cta, btn, email } = contact;
 
   return (
-    <section id="contact">
+    <mysection id="contact">
       <Container>
         <Title title="Contact" />
         <Fade bottom duration={1000} delay={800} distance="30px">
@@ -28,7 +28,7 @@ const Contact = () => {
           </div>
         </Fade>
       </Container>
-    </section>
+    </mysection>
   );
 };
 

@@ -19,8 +19,8 @@ function App() {
   useEffect(() => {
     setHero({ ...heroData });
     setAbout({ ...aboutData });
-    setProjects([...projectsData]);
-    setContact({ ...contactData });
+    // setProjects([...projectsData]);
+    // setContact({ ...contactData });
     setFooter({ ...footerData });
   }, []);
 
@@ -28,8 +28,8 @@ function App() {
     <PortfolioProvider value={{ hero, about, projects, contact, footer }}>
       <Hero />
       <About />
-      <Projects />
-      <Contact />
+      {/* <Projects /> */}
+      {/* <Contact /> */}
       <Footer />
     </PortfolioProvider>
   );

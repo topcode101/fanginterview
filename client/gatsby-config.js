@@ -1,3 +1,13 @@
+
+const { getThemeVariables } = require('antd/dist/theme');
+const x = getThemeVariables({
+  compact: true
+})
+// todo: this is not working, getThemeVariables is to
+// change react theme. 
+// maybe remove these code 
+
+console.log(JSON.stringify(x, null, 4))
 module.exports = {
   proxy: [
     {
@@ -15,6 +25,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-offline`,
+    'gatsby-plugin-antd',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -30,6 +41,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/../posts/`
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Gatsby Simplefolio`,
@@ -41,5 +59,27 @@ module.exports = {
         icon: 'src/images/favicon.png',
       },
     },
+    {
+      resolve: `gatsby-plugin-less`,
+      options: {
+        lessOptions : {
+          modifyVars: getThemeVariables({
+            compact: true
+          }),
+          javascriptEnabled: true,
+        },
+        javascriptEnabled: true,
+        modifyVars: {
+          'primary-color': '#BADA55'
+        }
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-antd',
+      options: {
+        style: true
+      }
+    },
+    `gatsby-transformer-remark`,
   ],
 };

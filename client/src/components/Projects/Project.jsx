@@ -124,7 +124,7 @@ const Project = ({definition}) => {
                 size='lg'
                 onClick={handleDownloadButton.bind(null, 'SoftwareEng', definition.company)}
                 >
-                {btnAhover? `点击下载\nSoftware Engineer 面经 (${numOfRecordsForSoftware})` : `${lastestPostTimeForSoftware} 更新\nSoftware Engineer 面经`}
+                {btnAhover? `1点击下载\nSoftware Engineer 面经 (${numOfRecordsForSoftware})` : `${lastestPostTimeForSoftware} 更新\nSoftware Engineer 面经`}
               </Button>
             </div>
           </Row>

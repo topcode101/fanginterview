@@ -23,9 +23,13 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about">
-      <Container>
-        <Title title="关于" />
+    <mysection id="about">
+      <Container
+        style={{
+          marginBottom: '30px'
+        }}
+      >
+        <Title title="About" />
         <Row className="about-wrapper">
           <Col md={6} sm={12}>
             <Fade bottom duration={1000} delay={600} distance="30px">
@@ -36,7 +40,7 @@ const About = () => {
           </Col>
           <Col md={6} sm={12}>
             <Fade left={isDesktop} bottom={isMobile} duration={1000} delay={1000} distance="30px">
-              <div className="about-wrapper__info">
+              <div className="about-wrapper__info" style={{color: 'black'}}>
                 <p className="about-wrapper__info-text">
                   {paragraphOne ||
                     'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi neque, ipsa animi maiores repellendu distinctioaperiam earum dolor voluptatum consequatur blanditiis inventore debitis fuga numquam voluptate architecto itaque molestiae.'}
@@ -65,7 +69,7 @@ const About = () => {
           </Col>
         </Row>
       </Container>
-    </section>
+    </mysection>
   );
 };
 
