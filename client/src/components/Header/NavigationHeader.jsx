@@ -1,9 +1,7 @@
 import React from 'react';
-import Fade from 'react-reveal/Fade';
-import PropTypes from 'prop-types';
-import { Layout, Menu, List, Avatar  } from 'antd';
+import { Layout } from 'antd';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header } = Layout;
 
 const NavigationHeader = () => (
     <Header theme='light' style={{
@@ -19,6 +17,7 @@ const NavigationHeader = () => (
             }}
         >Become a facebook data scientist</span>
         
+        Log in
     </Header>
 );
 

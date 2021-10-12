@@ -36,6 +36,10 @@ class APP {
     return this.services[serviceName];
   }
 
+  getServiceNameList() {
+    return Object.keys(this.services);
+  }
+
   /**
    * Dynamiclly load all webEngines
    */

@@ -32,5 +32,7 @@ export default {
   // test Service
   liveTestsPath: __dirname + '/livetest',
 
-  cacheDocsDir: __dirname  + '/../../cache_docs'
+  cacheDocsDir: __dirname  + '/../../cache_docs',
+
+  googleClientId: '166022609644-uu2o5cscof0vd9rbisdv34pc3or837c7.apps.googleusercontent.com'
 };

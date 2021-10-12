@@ -207,6 +207,7 @@ class DatabaseService extends BaseService {
       result = await db.collection(collectionName).findOne(key);
     } catch (error) {
       console.log(error);
+      throw(error);
     }
     return result;
   }

@@ -55,8 +55,25 @@ class ExpressServer {
       console.log('ACCESS', req.url) // populated!
       next()
     })
-    console.log(`    ... use ${config.wwwRoot} as static root`);
-    this.expressApp.use(express.static(config.wwwRoot));
+
+    function auth(req, res, next) {
+      console.log('auth: ' + req.url)
+      // var objUser = ba(req)
+      // if (objUser === undefined || objUser.name !== "john" || objUser.pass !== "1234") {
+      //     res.set("WWW-Authenticate", "Basic realm=Authorization Required")
+      //     res.status(401).end()
+      // } else { next() }
+      next()
+    }
+    
+    this.expressApp.use("/advanced", auth, express.static(config.wwwRoot + '/advanced'))
+    this.expressApp.use("/all-articles", auth, express.static(config.wwwRoot + '/all-articles'))
+    this.expressApp.use("/articles", auth, express.static(config.wwwRoot + '/articles'))
+
+    this.expressApp.use(express.static(config.wwwRoot))
+
+    // console.log(`    ... use ${config.wwwRoot} as static root`);
+    // this.expressApp.use(express.static(config.wwwRoot));
 
     if (!fs.existsSync(config.cacheDocsDir)) {
       fs.mkdirSync(config.cacheDocsDir, {recursive: true});
@@ -156,12 +173,21 @@ class ExpressServer {
    */
   preStartServer() {
     this.expressApp.get('/*', function(req, res) {
-      res.sendFile(path.join(config.wwwRoot, 'index.html'));
+      if (req.url.substring(req.url.length-4) === '.js/') {
+        //todo : this is a bug a to me..
+        // not sure why it ends up this case.
+        res.sendFile(path.join(config.wwwRoot, req.url.substring(0, req.url.length - 1)));
+      } else {
+        res.sendFile(path.join(config.wwwRoot, 'index.html'));
+      }
+
     });
+    // app.use('/admin', [ensureAuthenticated, express.static(path.join(__dirname, 'admin'))]);
+
 
     // catch 404 and forward to error handler
     this.expressApp.use(function(req, res, next) {
-      console.log('catch 404');
+      console.log('catch 404:', req.url);
       next(createError(404));
     });
 

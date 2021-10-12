@@ -2,6 +2,8 @@ import BaseService from '../ServiceBase';
 const http = require('http');
 const ExpressServer = require('./ExpressServer');
 import config from '../../config';
+import ApolloGQLServer from './ApolloServer';
+
 /**
  * WWW Service
  */
@@ -35,6 +37,10 @@ class RestfulService extends BaseService {
     this.expressApp = this.expressServer.getExpressAppInst();
     this.expressApp.set('port', config.httpServerPort);
     this.httpServer = http.createServer(this.expressApp);
+
+    // article on setup apollo: https://www.apollographql.com/docs/apollo-server/integrations/middleware/#apollo-server-express
+    const apollo = new ApolloGQLServer(this.app, this.expressApp, this.httpServer);
+    await apollo.initialization()
   }
 
   /**

@@ -1,13 +1,13 @@
 
 const { getThemeVariables } = require('antd/dist/theme');
-const x = getThemeVariables({
-  compact: true
-})
+// const x = getThemeVariables({
+//   compact: true
+// })
 // todo: this is not working, getThemeVariables is to
 // change react theme. 
 // maybe remove these code 
 
-console.log(JSON.stringify(x, null, 4))
+// console.log(JSON.stringify(x, null, 4))
 module.exports = {
   proxy: [
     {
@@ -17,6 +17,10 @@ module.exports = {
     {
       prefix: '/download',
       url: 'http://localhost:10010'
+    },
+    {
+      prefix: '/graphql',
+      url: 'http://localhost:10010/graphql'
     }
   ],
   plugins: [

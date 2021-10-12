@@ -4,6 +4,8 @@ import BaseService from '../ServiceBase';
 import config from '../../config';
 // const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
+const { OAuth2Client } = require('google-auth-library')
+
 
 import UserRouter from './UserRouter';
 /**
@@ -60,6 +62,19 @@ class UserService extends BaseService {
     return this.dbService.findOne(this.dbName, this.collectionName, {name: username});
   }
 
+  async delete(username) {
+    // check currentUserName
+     this.dbService.delete(this.dbName, this.collectionName, {name: username});
+  }
+
+  /**
+   *
+   * @param {*} email
+   */
+   async findByEmail(email) {
+    return this.dbService.findOne(this.dbName, this.collectionName, {email: email});
+  }
+
   /**
    *
    * @param {*} password
@@ -76,14 +91,21 @@ class UserService extends BaseService {
    *
    * @param {*} username
    * @param {*} password
-   * @param {*} type
+   * @param {*} role
    * @param {Object} otherinfo
    */
-  async register(username, password, type, otherinfo={}) {
-    if (!username || !password) {
-      throw new Error('user/password cannot be empty');
+  async register(username, password, role, source='NORMAL', otherinfo={}) {
+    if (source === 'NORMAL') {
+      if(!password) {
+        throw new Error('password cannot be empty');
+      }
     }
-    if (type === 'admin') {
+
+    if (!username) {
+      throw new Error('user cannot be empty');
+    }
+    
+    if (role === 'admin') {
       throw new Error('admin user registration is not allowed.');
     }
     const user = await this.find(username);
@@ -92,10 +114,11 @@ class UserService extends BaseService {
     } else {
       const encPass = this.encrypt(password);
       const UserModel = {
-        ...{otherinfo},
+        ...otherinfo,
         name: username,
         pass: encPass,
-        type: type || 'normal',
+        role: role || 'normal',
+        source: source
       };
       await this.dbService.insert(this.dbName, this.collectionName, UserModel);
     }
@@ -110,7 +133,9 @@ class UserService extends BaseService {
     const userModel = await this.find(username);
     if (!userModel) {
       throw new Error(`User "${username}" does not exist.`);
-    } else {
+    } else if (userModel.source == 'GOOGLE') {
+      throw new Error(`Please sign in from google.`);
+    }else {
       // verifyUserPass password
       const encPass = this.encrypt(password);
       if (userModel.pass !== encPass) {
@@ -126,7 +151,7 @@ class UserService extends BaseService {
    * @param {*} password
    * @return {Object} { token }
    */
-  async login(username, password) {
+  async login(username, password, role='normal') {
     try {
       const userModel = await this.verifyUserPass(username, password);
       return new Promise((resolve, reject)=>{
@@ -134,7 +159,7 @@ class UserService extends BaseService {
             {
               username: userModel.name,
               password: userModel.pass,
-              type: userModel.type,
+              role: userModel.role,
             },
             config.jwtSecret,
             {
@@ -164,6 +189,56 @@ class UserService extends BaseService {
     const decoded = jwt.verify(token, config.jwtSecret);
     return decoded;
   }
+
+  async _create_jwt_token(username, password, role, source): Promise<{token: String}>{
+    return new Promise((resolve, reject)=>{
+      jwt.sign(
+        {
+          username: username,
+          password: password,
+          role: role,
+        },
+        config.jwtSecret,
+        {
+          expiresIn: '7d',
+          issuer: 'fanginterview',
+          subject: `${username},${role},${source}`,
+        }, (err, token) => {
+          if (err) reject(err);
+          resolve(
+              {
+                token,
+              });
+        });
+    });
+  }
+
+  async loginGoogleAccount(googleIdToken): Promise<String> {    
+    const client = new OAuth2Client(config.googleClientId)
+    const ticket = await client.verifyIdToken({
+        idToken: googleIdToken,
+        audience: config.googleClientId
+    });
+
+    
+    const { name, email, picture } = ticket.getPayload();    
+    const user = await this.findByEmail(email);
+    if (!user) {
+      console.log('need to create the user')
+      const username = email;
+      const password = null;
+      const role = 'normal';
+      const source = 'GOOGLE';
+      const otherinfo = {
+        'email': email
+      }
+      await this.register(username, password, role, source, otherinfo);
+      return 'Done. Created User.'
+    }
+    const jwt = await this._create_jwt_token(email, null, 'normal', 'GOOGLE');
+    return jwt.token;
+  }
+
 }
 
 export default UserService;
