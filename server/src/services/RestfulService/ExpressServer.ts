@@ -51,6 +51,10 @@ class ExpressServer {
    */
   async initialization() {
     this.expressApp = express();
+    this.expressApp.use(function (req, res, next) {
+      console.log('ACCESS', req.url) // populated!
+      next()
+    })
     console.log(`    ... use ${config.wwwRoot} as static root`);
     this.expressApp.use(express.static(config.wwwRoot));
 

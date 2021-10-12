@@ -229,7 +229,7 @@ class Utils {
           rej(error);
         } else {
           console.log('Email sent: ' + info.response);
-          res();
+          res(null);
         }
       });
     });
