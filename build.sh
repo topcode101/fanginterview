@@ -2,8 +2,8 @@
 # And use a static site genenrator to create a website..
 
 # build client
-cd client
-npm run build
+cd fanginterview-ui
+yarn build
 cd ..
 # build server
 cd server

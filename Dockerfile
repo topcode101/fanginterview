@@ -22,7 +22,7 @@ ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
 ENV NODE_ENV production
 # Create app directory
-WORKDIR /usr/src/app/server
+WORKDIR /usr/src/app
 # RUN mkdir dist
 # COPY package*.json ./
 # RUN npm install
@@ -36,4 +36,4 @@ WORKDIR /usr/src/app/server
 # RUN chmod 400 /root/.ssh/id_rsa
 
 EXPOSE 3000
-CMD [ "npm", "run", "start" ]
+CMD [ "prod_start_all.sh"]

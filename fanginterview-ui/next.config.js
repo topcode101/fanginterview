@@ -10,6 +10,9 @@
 // }
 module.exports = {
   reactStrictMode: true,
+  env: {
+    graphql_endpoint: 'http://localhost:10010/graphql',
+  },
 }
 // module.exports = withCSS({
 //   cssModules: true,
