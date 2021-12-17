@@ -3,6 +3,7 @@
 
 # build client
 cd fanginterview-ui
+yarn install
 yarn build
 cd ..
 # build server

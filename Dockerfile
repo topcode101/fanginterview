@@ -9,9 +9,10 @@ RUN apt-get update && apt-get install -y \
 
 
 # Install nvm with node and npm
+RUN mkdir -p /usr/local/nvm
 ENV NVM_DIR /usr/local/nvm
 ENV NODE_VERSION 14.18.1
-RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash \
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash \
     && source $NVM_DIR/nvm.sh \
     && nvm install $NODE_VERSION \
     && nvm alias default $NODE_VERSION \
@@ -35,5 +36,8 @@ WORKDIR /usr/src/app
 # COPY id_rsa_for_docker /root/.ssh/id_rsa
 # RUN chmod 400 /root/.ssh/id_rsa
 
+EXPOSE 10010
 EXPOSE 3000
-CMD [ "prod_start_all.sh"]
+
+RUN pwd
+CMD [ "./prod_start_all.sh"]

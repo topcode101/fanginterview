@@ -52,7 +52,7 @@ class ExpressServer {
   async initialization() {
     this.expressApp = express();
     this.expressApp.use(function (req, res, next) {
-      console.log('ACCESS', req.url) // populated!
+      console.log('ACCESS', req.url, req.body) // populated!
       next()
     })
 
