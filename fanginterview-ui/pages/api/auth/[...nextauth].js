@@ -23,4 +23,5 @@ export default NextAuth({
     }),
     // ...add more providers here
   ],
+  secret: 'hCEsD1X7z68vBrVip73h5FjyxQaskk6dQ01UOru4JwQ=', //`openssl rand -base64 32`
 })

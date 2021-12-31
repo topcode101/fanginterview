@@ -27,7 +27,7 @@ export default function Header({ }) {
                 Cracking Data Science Interview
               </Typography>
               {
-                session ? (<>
+                session && session.user ? (<>
                   Signed in as {session.user.email} <br />
                   <Button color="inherit" onClick={() => signOut()}>Sign out</Button>
                 </>) : (
