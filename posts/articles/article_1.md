@@ -31,6 +31,7 @@ The rest need to pay
 The above point out the problem. THis is a very typical causal analysis. You don’t need to be an expert on casual analysis, but you need to know the drawbacks and potential solutions and methodologies! [ link to causal analysis in tech companies ]
 Remember, you are try to discuss with someone for a data solution! You have to provide all pros and cons for different methodolegies. Some are more accurate some are not. Depends on the goal, you will choose the right solution.
 
+[membership]
 > Example answers 1. 
 
 > Example answers 2. 
@@ -39,6 +40,7 @@ THe final question is about how to address it. This involves with business sense
 
 > Example answers 1.
 
+[/membership]
 
 
 > Example answer 2.

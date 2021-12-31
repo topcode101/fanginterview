@@ -7,8 +7,8 @@ cd ..
 ## copy server
 cp -R server/dist app/server
 cp server/package.json app/server/.
-cd app/server && npm install --only=prod
-cd ../..
+# cd app/server && npm install --only=prod
+# cd ../..
 
 ## copy client
 mkdir -p app/client
@@ -22,3 +22,7 @@ cp fanginterview-ui/package.json app/client/package.json
 
 ## copy scripts
 cp app_scripts/* app/.
+
+## copy posts
+mkdir -p app/posts
+cp -R posts app/posts

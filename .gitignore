@@ -4,3 +4,5 @@ data/
 app/
 app.zip
 cache_docs/
+
+.DS_Store
