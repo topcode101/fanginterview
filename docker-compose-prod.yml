@@ -35,6 +35,7 @@ services:
       - "80:3000"
     environment:
       TZ: "America/Toronto"
+      NEXTAUTH_URL: "http://crackingdatascienceinterview.com"
     depends_on:
       - mongo
     links:
