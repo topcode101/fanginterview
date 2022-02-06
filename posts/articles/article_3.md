@@ -1,11 +1,10 @@
 ---
 layout: unique layout stufff
-title: FB 3 Define meaningful social interactions in FB?
+title: Define meaningful social interactions in FB?
 description: this is a description
 summary: this id my summary
 tags: [css]
 ---
-#  
 
 https://www.productmanagementexercises.com/6092/define-meaningful-interaction-facebook-metrics-evaluate
 
@@ -13,162 +12,86 @@ https://www.1point3acres.com/bbs/thread-796041-1-1.html
 
 https://www.fastcompany.com/90679444/this-is-whats-really-behind-the-great-resignation
 
-https://animoto.com/blog/business/facebook-explains-news-feed-update
+httpHints: define business problem ; define metric ; 
 
+**`A Common Failed Reason`**: I guess you don’t know where to start even and feel a bit panic in the interview. Don’t focus too much on technicals or a perfect metrics. This quesiton is more on business discussions and the communication strategy. This is a quetion that is kind of reshaping an OKR of a company. Remember to translating a business problem into data problem.
 
+First of all, this is a blurred question. The ambiguity is intended and is actually meant for more senior people to answer in real working situation. If a CEO comes to you and ask the question, what would you response?
 
-Hints: define business problem ; define metric ; 
+Lucily this  is an interview question so you can ask what ever you want to `discuss` the direction of the answer. Different interviewer may have a bit different answer to this but in the end, it is about to demonstrate your thought process that tacking such high level quesitions.
 
-`Why fail`not know where to start.
+As a rule of thumb, there is a trick for you to get start, in stead of asking about the goal, ask why. `Why even start this question or start this task`. Here is an exampe answer to get the conversation started.
 
-First of all, clarify the goal. It looks like it is just define metrics but it actually , and must involvs with some business problem ! Put your self in to the situation that CEO is actually ask you this quesiton. Would you just do it?
-
-No ! You must discuss with him why even ask this question. Understand the business problem behind this.
-
-> So first of all I would like to clarify what is the busiss problems that we want to address before we define the meaningful social interactions here.
-
-Can you take a guess.
-
-> It is likely that without a meanifing social interaction as our goal, we may have too many non-meaningful like interaction with ads, impression with ads etc. It is violating with FB mission!! that is why.
-
-**https://www.quora.com/How-do-news-feed-algorithms-work/answer/Abhinav-Sharma: emergence of clickbait as a problem. Now, one can make the naïve argument that maximizing click => maximizing impressions => maximizing advertising dollars, and this is how the industry has more or less operated for a while.**** 如果你知道这个本质 那么下面的问题就更容易了**But burnout is real and the most money is in high intent advertising (travel, wedding, etc.) and not just any clicks so companies are trying to find ways to optimize long-term metrics over short term metrics. The problem with long term metrics is that they’re too nebulous and sparse to perform effective machine learning on, e.g. a satisfaction survey or a qualitative feedback report, or worse, a user dropping off your product for good.**
-
-
-
-After that you would know what to answer. You want to quantify it! Always put it as at least two side: customer perspective and company perspective. 
-
-From company perspective, the meaningful is always involve profit and actually it is related to long/short term performance.
-
-From customer perspective, it is if user is happy about the product!! in busienss is it like engagement etc.
-
-> I would like to define the what is meaningful here and then quantify it. THe quantification would be direct measurement or proxy and I’ll try to measure it from different perspective if necessary.
+> This sounds a very broad but also quite interesting topic. You are asking about ‘meaningful social interactions’. Before we talk about the some candidates, I think it is crucial to understand a bit more on the background and the proble we are addressing here.
 >
-> Now meaningful: I would define it as “meant to keep you connected to the people, places and things that you care about, starting with your friends and family”
+> So, may I ask why we are redefining the metric and what are the concerns? 
 
-Now, it seems at least some part of it can be quanitied, like connect frineds etcs.
+With this starter, interviewers now understand you are discussing the business problem. 
+`Do not start by giving a answer like ‘weighted combination of DAU and …’. `
 
-> So on high level: our metric would be.
+Even if you ask about the background, the interviewers may want you to take a guess. To be honest it is a little bit hard for a person without any context but, on the other hand, if you are a senior or staff level data scientist, you’d better to have a bit business acumen to take the guess here:
+
+> Here is my understanding: Generally speaking we’d like to transfer from ‘relevant’ to ‘meaningful’, which matches our altimate goal of FB: that is to connect people together. One example is that there are too many news feed on FB these days that are about business, brand and media, which in turns takes the place of the post from our friends, etc.
+
+So, until now, you get the sense of the busines problem itself. What’s next?
+Interviewer: now can you define a better metric to measure meaningful? 
+
+Consider the following dimention
+
+* Long and short term measurement
+* Trade-offs of different target
+
+Also remember, make your answer structured!
+I am going to structure the answer in the following three paragraph
+
+1. How to define meaningful?
+2. How to quantify a meaningful?
+3. How to think about some pros & cons of different definition.
+
+Bring up your own answer about meaningful definition, no need to be perfect!
+
+> Here is my thought: I’ll bring up my proposal with different stakeholder of course for discussions and feedback. 
+> So, let’s say: meaningful interactions means: `interaction posted by indivisual users that is more related to personal emotions and also have a positive way to connect people together! `
+
+There is no right or wrong, no need to be perfect! `It is about if you can quantify a business question in to measuable data problem to solve!`
+
+Now, define the metrics. Here is an example answer.
+
+> We should collect the meaningful actions from each product team. It will be more objective but is totally fine. We can also even start a survey ask people what kind of interaction is more meaningful to them.
 >
-> 1. Engagement with friends or family
+> I’ll list a few for now:
 >
-> To define a more specific one.
+> For news feed, this would be `number of reactions(likes, reply, msg) for a user that is related to his friends or families.
+> `. For messagers, this could be `number of messages that are send to users` 
 >
-> Engagement would be 
+> On the opposite, `number of post that triggers engagement-bait` is a completely opposite metric! Those posts should be demoted.
+> or 
+> `interactions of post that is related to seaking help like missing childern` should be a metric to measure tsome sort of social impact and shoud be generally promoted.
+
+Finally, talk about the how to pick these metrics candidate.
+
+> First of all, from metrics pespective, we should rule out metrics that are hard to measure or taking actions. Metrics are used to set up goals and it should be clear.
 >
-> 1. likes
-> 2. comments
+> From busienss perspective, the final metrics will be different from product to product. We should have an final overview that these metrics between different teams are aligned and no conflict. A promotion of one metric is likely conflicted to another metric.
 >
-> There is something here as what is family or friends. Well, it is the social graph. related.
+> We should also pay attention to long & short term goals as well. (I’ll skip these part as it is more of a free discussion here.) 
 
-Let’s skip this first.
+Most importantly how do we measure the successful of a definition?
 
-You would ask so what! right. How we use this metric? It actually can be used in the model training procedures!
+> Experimentation! Set up a long term hold out group for any product changes that is related to the metric change.
+> For example, we might change algorithm target functions because we adjusted the weight of different engagement metrics to make it more ‘meaningful’. A/B test would be the golden standard to test both short term and long term impact.
 
-This is why we need to definition first!
+What do you think about machine learning models here?
 
-`Wrong answer`: User a combined metric : use the weights:regression for predict active users by likes, … etc.
+>It will have impact on the labeling on supervised machining models or target functions of any optimization algorithms like news feeding rankings.
 
-This is very wrong!!! You have to know why it is wrong. For example, if you regress likes and other things to active users, then why you even want to use the prediction or correlation here. why not just user active user!
 
-The reason is becasue you havn’t think through what is needed.
 
-There is no right or worng, it is about judgement call.
+With all the these above, you passed the interview.
 
-这里如果真的有predict 一定是long term/short term metric 的trade off！https://www.quora.com/How-do-news-feed-algorithms-work/answer/Abhinav-Sharma
 
-You can even framing the problem to be a ML problem! for 
 
+Here is also some materials for you to refer to :
 
+> [Facebook bring people closer together](https://www.facebook.com/business/news/news-feed-fyi-bringing-people-closer-together)
 
-# FB高频题 https://www.1point3acres.com/bbs/thread-697741-1-1.html
-
-
-
-
-
-FB Case 1 Detect Spam Requests
-
-hints:  ml model, spam, fraud related.
-
-Why fail: not understand why to even do it. Friction Design in Product
-
-First of all, we need to frame the problem. But before that we even want to understand the use case! That’s how we know what kind of model we need and when the model can be used to address the business problem.
-
-> So, I am thinking this i like a modeling question but before we deepdive into it. I want to understand the business problem first which would help us to choose the right model and techniques to address the problem.
->
-> If I am undertand it correctly, we want to detect a spam request to a FB user. And the spam is likely due to some not good user that send out a lot of Friend request. And at that time of request we want to prevent it happening or stop it happning.
->
-> For the SPAM, let’s say it is request level. but not user level, right?
-
-Then the interviewer would tell you what kind of that is.
-
-Now here comes another question, is this a supervised or non supervised model?
-
-
-
-“There is a question of who can send you friend requests, and it's strongly suggested that you change it to "Friends of Friends.”‘
-
-* this person profile history recent change
-* mutual friends
-* if profile complete
-* if image real
-* if his frined makes sense
-* spam behavior: ask to send money/ ask to send video
-
-
-
-# FB Case 2 FB want to launch a new product called Portal. (virtual meeting) (1) identify potential users (2) how to know if the product meets the need (3) impact of Portal to FB overall (4) if entering Europian, can we drop the price?
-
-
-
-hints: market sizing, product metrics, FB ecosystem, product pricing. 
-
-Common failure: not organized thinking and not reachable.
-
-1) Market sizing: similar product, (approxy of the product bench mark); user needs ( who really need this product) ;  from data perpective, we can use internal data or external data. 
-
-2) Product needs is certainly the product metrics. We can track the health of the product itself. Ladder of engagement is more important here. It is about the user journey and lifecycle of the product.  
-
-   Even the need itself can be general needs or specific needs
-
-   Also, recommended go from user direct feedback: such as tickets. complaints, forums to understand the data. Even , user resarch if we have it.
-
-3) Yes, this is just metric of other. But we can think of scenarios that will have some canibonism or thynergy!
-
-4) This is about pricing elasticity.
-
-
-
-
-
-# FB 3 What is the impact of parent’s presence on Facebook?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Solve problem is less important, it is about the methodology-> What problem to solve first!! This is the goal!!!
-
-
-
-# Google
-
-https://www.1point3acres.com/bbs/thread-779954-1-1.html
-
-一个假象的case，说你有一个客户来找你 想问你城市A/B 居民的身高是否有差别 你准备怎么来帮助客户回答这个问题。 然后又这个问题进行了延展 比如说，做调研，找online 数据， 随机选人来测量他们的身高。 每个方法快问快答了一下你觉得的优缺点
-然后说假设AB test 做的话 哪些因素会影响你的sample size。每一个因素用通俗的语句和客户讲解。 其中有一个follow up是如果estimate 年龄的standard deviation
-后面问了linear model的有哪些assumption，怎么检查违背了怎么办， VIF 具体是怎么算的， Multi collinearity 会有什么问题.. etc  
-
-# Google [Statistics] How to compare heights of two cities
-
-**Hint** Stats driven. Benchmark statistical methods. 

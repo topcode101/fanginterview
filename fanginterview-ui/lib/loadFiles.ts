@@ -60,14 +60,22 @@ export function loadAllFileList(dir: string, filenameFilterCb: Function, recursi
 // TODO: should return ArticleReview other than Ariticle
 export function getAllArticlePreviewList(): Array<Article> {
     let allFiles = loadAllFileList(postsDirectory, (x: string)=>x, true);
-    return allFiles.map(f=>{
+    return allFiles.filter(function(f) {
+        if (f.meta.draft) {
+            console.log("Found draft", f.meta.title)
+            return false; // skip
+        }
+        return true;
+      }).map(f=>{
         const slug = f.id.replace(/\.md$/, '')
+        
         return {
             title: f.meta.title,
             description: f.meta.description,
             slug: slug,
             content: f.content
         }
+        
     });
 }
 

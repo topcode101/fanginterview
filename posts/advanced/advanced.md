@@ -4,6 +4,7 @@ title: advanced page
 description: this is a description
 summary: this id my summary
 tags: [css]
+draft: True
 ---
 
 
