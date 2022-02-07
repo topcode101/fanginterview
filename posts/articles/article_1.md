@@ -38,7 +38,12 @@ An example answer could be:
 
 As you can see, we just talked about three ways to validate the hyposise from data. Highly recommend to briefly talk about the pros and cons in the end. This actually proves that you are a qualified experienced data scientist : )
 
-> Correlation anlaysis is quick but may suffer issues of correlation and causation. Causal analysis is theoretically more accurate but still takes time to find the true cofounder. The final result is very likely biased with causal analysis on observational data. Experimentation based study is most accurate but it really takes a lot of resource to do it.
+**[membership]**
+>
+Correlation anlaysis is quick but may suffer issues of correlation and causation. Causal analysis is theoretically more accurate but still takes time to find the true cofounder. The final result is very likely biased with causal analysis on observational data. Experimentation based study is most accurate but it really takes a lot of resource to do it.  
+
+
+**[/membership]**
 
 
 
@@ -50,6 +55,9 @@ One follow up question here:
 
 This by no means is a subquesiton to test if you can structure the answers. 
 
+
+**[membership]**
+
 > (interviewee) We need to measure the impact and let’s define the measurement. We can try to understand the measurement on this categories.
 >
 > 1. company level OKR metric: for example avg DAU, avg user Revenue. If the problem is large enough, we are likely to have significant drop of thse metrics and we definitely  need to come up with strategies to adress this problem.
@@ -58,7 +66,9 @@ This by no means is a subquesiton to test if you can structure the answers.
 >
 > 2. Other user behavior metrics. This set of metrics is trying to measure more secondary things. Some hypothesis could be : yong  would have different behavior with parents like more or less interactions. The corresponding metric could be comments, time spend on app. interactions with parents and non-parents., even time changes.
 >
-> 3. Heterogenious effect: this impact would be different for different cohort. like country/culture/education !! We would segment on these users!
+> 3. Heterogenious effect: this impact would be different for different cohort. like country/culture/education !! We would segment on these users!  
+
+**[/membership]**
 
 
 

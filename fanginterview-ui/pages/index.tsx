@@ -7,6 +7,7 @@ import { gql } from "@apollo/client";
 import client from "../apollo-client";
 import { GetStaticProps} from 'next'
 import Button from '@mui/material/Button';
+import Link from 'next/link'
 
 export const getStaticProps: GetStaticProps = async(context) =>{
   const { data } = await client.query({
@@ -39,7 +40,9 @@ const Home: NextPage<{data: any}> = (props) => {
         </h1>
        <h2>
         
-       <a href='/all-articles'> Get started to become a Data Scientist!  </a>
+        <Link href="/all-articles">
+          <a>Get started to become a Data Scientist!</a>
+        </Link>
        </h2>
         {/* <p className={styles.description}>
           Get started by editing{' '}

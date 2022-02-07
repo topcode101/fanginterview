@@ -35,6 +35,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import { getAllArticlePreviewList, Article } from '../lib/loadFiles'
 import Link from 'next/link'
+import { stringify } from 'remark';
 
 export const getServerSideProps = async(context: any) =>{
   const articles = getAllArticlePreviewList()
@@ -60,7 +61,7 @@ const AllArticles: NextPage<{data: any}> = (props) => {
           <List sx={{ width: '100%',  bgcolor: 'background.paper', marginTop: '10px' }}>
             { 
               props.data.map((item: Article, ind: number, data: Array<Article>)=>{
-                 let x = [ <ListItem alignItems="flex-start">
+                 let x = [ <ListItem key={String(ind)} alignItems="flex-start">
                     <ListItemAvatar>
                       <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                     </ListItemAvatar>
