@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
-import markdownToHtml from '../../lib/markdownToHtml'
+import {replaceMembership, markdownToHtml } from '../../lib/markdownToHtml'
 import { getAllArticlePreviewList, getArticalBySlug } from '../../lib/loadFiles'
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
@@ -47,10 +47,12 @@ export async function getServerSideProps(ctx: any) {
 //     'coverImage',
 //   ])
     let html_content = await markdownToHtml(article.content || '');
+    replaceMembership(html_content)
     const session = await getSession(ctx);
     if (!session) {
-      const regex = /<p>\[membership.*\/membership\]<\/p>/igms;
-      html_content = html_content.replace(regex, '<div class="secret"> Please Sign in to unlock this.</div>')
+      // const regex = /<p>\[membership.*\/membership\]<\/p>/igms;
+      // html_content = html_content.replace(regex, '<div class="secret"> Please Sign in to unlock this.</div>')
+      html_content = replaceMembership(html_content);
       return {
         props: {
           post: {
