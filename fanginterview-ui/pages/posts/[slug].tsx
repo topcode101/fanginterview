@@ -63,7 +63,7 @@ export async function getServerSideProps(ctx: any) {
         },
       }
     } else {
-      const regex = /<p>\[.*membership\]<\/p>/igm;
+      const regex = /<p>.*\[?membership\].*<\/p>/igm;
       html_content = html_content.replace(regex, '')
       return {
         props: {
