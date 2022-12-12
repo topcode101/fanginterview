@@ -1,97 +1,85 @@
 ---
 layout: unique layout stufff
-title: Define meaningful social interactions in FB?
-description: this is a description
+title: How do you measure success of customer service experience?
+description: measure a business with metrics
 summary: this id my summary
 tags: [css]
 ---
+* Potential Source of Companies: {AirBnb}
+* Technical Area: {Define Metrics} {Debug Metrics}
+* Business Area: {Customer Service}
+### Real Interview Question
+(with some adjustment)
 
-https://www.productmanagementexercises.com/6092/define-meaningful-interaction-facebook-metrics-evaluate
+* How to measure success of customer service experience of Airbnb?
+* If # customer service ticket goes up, what could it be?
 
-https://www.1point3acres.com/bbs/thread-796041-1-1.html
+### Pro Tips
 
-https://www.fastcompany.com/90679444/this-is-whats-really-behind-the-great-resignation
+Give a high level framework before you answer details!  
+Don't go too far into details which weaken your framework.  
+Make it a very structured conversation.
 
-httpHints: define business problem ; define metric ; 
+Follow-up question is a very general debug question.  
+Find a framework to make sure you ideas is not pure random business intuition.
 
-**`A Common Failed Reason`**: I guess you don’t know where to start even and feel a bit panic in the interview. Don’t focus too much on technicals or a perfect metrics. This quesiton is more on business discussions and the communication strategy. This is a quetion that is kind of reshaping an OKR of a company. Remember to translating a business problem into data problem.
+###  A recommended answer
 
-First of all, this is a blurred question. The ambiguity is intended and is actually meant for more senior people to answer in real working situation. If a CEO comes to you and ask the question, what would you response?
+> I would want to understand the business a bit more:  
+what is the business problem that customer service try to resolve(original goal),  
+and how it is solving the problem as of today(how it works)
 
-Lucily this  is an interview question so you can ask what ever you want to `discuss` the direction of the answer. Different interviewer may have a bit different answer to this but in the end, it is about to demonstrate your thought process that tacking such high level quesitions.
+* Assume interviewer gives you a very standard introduction on what this department do: customer submit tickets with issues & they mainly address tickets from customers
+* Let's talk about the measurement framework to the interviewer
 
-As a rule of thumb, there is a trick for you to get start, in stead of asking about the goal, ask why. `Why even start this question or start this task`. Here is an exampe answer to get the conversation started.
-
-> This sounds a very broad but also quite interesting topic. You are asking about ‘meaningful social interactions’. Before we talk about the some candidates, I think it is crucial to understand a bit more on the background and the proble we are addressing here.
+> So, based on the business goal of customer experience group,  
+> I want to measure the success in the following two direction:
+> 1. The effectiveness of the department/ program, defined as this metric
+> * `case resolved rate`.
+> 2. The efficiency of the department. For example, how fast can you resolve case, defined as this metric
+> * `average time to resolve the case`.
 >
-> So, may I ask why we are redefining the metric and what are the concerns? 
-
-With this starter, interviewers now understand you are discussing the business problem. 
-`Do not start by giving a answer like ‘weighted combination of DAU and …’. `
-
-Even if you ask about the background, the interviewers may want you to take a guess. To be honest it is a little bit hard for a person without any context but, on the other hand, if you are a senior or staff level data scientist, you’d better to have a bit business acumen to take the guess here:
-
-> Here is my understanding: Generally speaking we’d like to transfer from ‘relevant’ to ‘meaningful’, which matches our altimate goal of FB: that is to connect people together. One example is that there are too many news feed on FB these days that are about business, brand and media, which in turns takes the place of the post from our friends, etc.
-
-So, until now, you get the sense of the busines problem itself. What’s next?
-Interviewer: now can you define a better metric to measure meaningful? 
-
-Consider the following dimention
-
-* Long and short term measurement
-* Trade-offs of different target
-
-Also remember, make your answer structured!
-I am going to structure the answer in the following three paragraph
-
-1. How to define meaningful?
-2. How to quantify a meaningful?
-3. How to think about some pros & cons of different definition.
-
-Bring up your own answer about meaningful definition, no need to be perfect!
-
-> Here is my thought: I’ll bring up my proposal with different stakeholder of course for discussions and feedback. 
-> So, let’s say: meaningful interactions means: `interaction posted by indivisual users that is more related to personal emotions and also have a positive way to connect people together! `
-
-There is no right or wrong, no need to be perfect! `It is about if you can quantify a business question in to measuable data problem to solve!`
-
-Now, define the metrics. Here is an example answer.
-
-> We should collect the meaningful actions from each product team. It will be more objective but is totally fine. We can also even start a survey ask people what kind of interaction is more meaningful to them.
+> If the time to process case is long, then focus on **general funnel metrics** to resolve case to debug why it is taking too long,  
+> for example if it is because there is not enough agent  
+> (all too busy or agent not available out of work), or if just because,  
+> the tickets is hard to resolve.
 >
-> I’ll list a few for now:
+> 3.  Last but not least, the unit economics of this department.
+> * `dollar cost per case resolved`
+
+* I am not listing a long detailed conversation above. You should make it more conversational.
+* Now the follow up question is about metric-deep-dive:
+
+> For the follow up quesiton on why tickets would be higher like 10%,  
+> I want to tackle this in three steps:
 >
-> For news feed, this would be `number of reactions(likes, reply, msg) for a user that is related to his friends or families.
-> `. For messagers, this could be `number of messages that are send to users` 
+> 1. Make sure this is not false alarm from **bad data quality**
 >
-> On the opposite, `number of post that triggers engagement-bait` is a completely opposite metric! Those posts should be demoted.
-> or 
-> `interactions of post that is related to seaking help like missing childern` should be a metric to measure tsome sort of social impact and shoud be generally promoted.
-
-Finally, talk about the how to pick these metrics candidate.
-
-> First of all, from metrics pespective, we should rule out metrics that are hard to measure or taking actions. Metrics are used to set up goals and it should be clear.
+> I would double check data source, and visualize timeline trend of tickets.
 >
-> From busienss perspective, the final metrics will be different from product to product. We should have an final overview that these metrics between different teams are aligned and no conflict. A promotion of one metric is likely conflicted to another metric.
+> 2. Get initial **data insights** to come up with hypotheses:
 >
-> We should also pay attention to long & short term goals as well. (I’ll skip these part as it is more of a free discussion here.) 
-
-Most importantly how do we measure the successful of a definition?
-
-> Experimentation! Set up a long term hold out group for any product changes that is related to the metric change.
-> For example, we might change algorithm target functions because we adjusted the weight of different engagement metrics to make it more ‘meaningful’. A/B test would be the golden standard to test both short term and long term impact.
-
-What do you think about machine learning models here?
-
->It will have impact on the labeling on supervised machining models or target functions of any optimization algorithms like news feeding rankings.
-
-
-
-With all the these above, you passed the interview.
-
-
-
-Here is also some materials for you to refer to :
-
-> [Facebook bring people closer together](https://www.facebook.com/business/news/news-feed-fyi-bringing-people-closer-together)
-
+> * find out when this happened from time-series.
+> * Narrow down what category of tickets goes up, if data available.
+> With this all ready, we are ready to both rull out or come up with some hypotheses.
+>
+> 3. I'll **list hypothesis and describe how to validate it with data**:
+> a) external
+> b) internal reasons
+> c) data issue.
+>
+> External reasons could be
+> * Holiday, which means it is seasonal on tickets. Metrics to check could be ...
+> * Competitors
+>
+> Internal reasons could be:
+> * did we make any change, like launch new product. Metrics to check could be ...
+> * did we had any outage during the time
+> * if the tickets is brough up by high booking volume as well: Metrics to check could be ...
+>
+> Other hypothesis like if the extra tickets is filed from certain user group,  
+> which again can be validated by different segmentation analysis
+>
+> After understand what could be the main reason, we could be able to  
+> **brainstorm** solutions to address the problem.  
+> but I would also do **impact sizing** to understand the pros and cons to improve the metric
