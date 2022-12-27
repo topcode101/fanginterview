@@ -1,3 +1,5 @@
+System Architecture: https://docs.google.com/drawings/d/1rcubgr6CZWvXtOObVq-mZKufgnl5Sa3wUG3H1A_82IQ/edit
+
 # Quick start for developer
 1. First time run to install nvm
 `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash`
